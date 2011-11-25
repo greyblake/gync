@@ -29,7 +29,7 @@ module Gync
   end
 
   def config_file
-    File.join(home_dir, '.gync.yml')
+    ENV['GYNC_CONFIG'] || File.join(home_dir, '.gync.yml')
   end
 
   def opts_for(command)
