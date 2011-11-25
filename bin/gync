@@ -2,7 +2,7 @@
 
 require 'rubygems'
 require 'optparse'
-require File.expand_path('gync', '../lib/')
+require File.expand_path('../../lib/gync', __FILE__)
 
 arg = ARGV.first
 
