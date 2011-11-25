@@ -4,14 +4,15 @@
 # -*- encoding: utf-8 -*-
 
 Gem::Specification.new do |s|
-  s.name = %q{gync}
+  s.name = "gync"
   s.version = "0.0.0"
 
   s.required_rubygems_version = Gem::Requirement.new(">= 0") if s.respond_to? :required_rubygems_version=
   s.authors = ["Potapov Sergey"]
-  s.date = %q{2011-11-25}
-  s.description = %q{Synchronizes data of desktop applications using Git}
-  s.email = %q{blake131313@gmail.com}
+  s.date = "2011-11-25"
+  s.description = "Synchronizes data of desktop applications using Git"
+  s.email = "blake131313@gmail.com"
+  s.executables = ["gync"]
   s.extra_rdoc_files = [
     "LICENSE.txt",
     "README.rdoc"
@@ -20,19 +21,22 @@ Gem::Specification.new do |s|
     ".document",
     ".rspec",
     "Gemfile",
+    "Gemfile.lock",
     "LICENSE.txt",
     "README.rdoc",
     "Rakefile",
     "VERSION",
+    "bin/gync",
+    "gync.gemspec",
     "lib/gync.rb",
     "spec/gync_spec.rb",
     "spec/spec_helper.rb"
   ]
-  s.homepage = %q{http://github.com/greyblake/gync}
+  s.homepage = "http://github.com/greyblake/gync"
   s.licenses = ["MIT"]
   s.require_paths = ["lib"]
-  s.rubygems_version = %q{1.6.2}
-  s.summary = %q{Synchronizes data of desktop applications}
+  s.rubygems_version = "1.8.10"
+  s.summary = "Synchronizes data of desktop applications"
 
   if s.respond_to? :specification_version then
     s.specification_version = 3
