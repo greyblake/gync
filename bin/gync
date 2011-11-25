@@ -1,0 +1,14 @@
+#!/usr/bin/env ruby
+
+require 'rubygems'
+require 'optparse'
+require File.expand_path('gync', '../lib/')
+
+arg = ARGV.first
+
+case arg.to_s
+  when /^(-h|--help|help|\s*)$/
+    Gync.print_help
+  else
+    Gync.run arg
+end
