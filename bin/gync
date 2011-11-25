@@ -1,8 +1,11 @@
 #!/usr/bin/env ruby
 
+$LOAD_PATH.unshift File.expand_path('../../lib', __FILE__)
 require 'rubygems'
+require 'ruby-debug'
+
+require 'gync'
 require 'optparse'
-require File.expand_path('../../lib/gync', __FILE__)
 
 arg = ARGV.first
 
