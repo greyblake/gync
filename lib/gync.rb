@@ -1,26 +1,31 @@
 require 'yaml'
 require 'ostruct'
+require 'socket'
+require 'shellwords'
 require 'git'
-
 require 'gync/git'
 
 module Gync
   extend self
-  class Error < Exception; end
-
   def print_help
-    puts "HELP MESSAGE"
+    puts <<-HELP
+Synchronizes application data using git.
+Usage:
+    gync COMMAND <command_options>
+    gync --help
+
+For more help please visit https://github.com/greyblake/gync
+    HELP
   end
   
-  def run(command)
-    @opts = opts_for command
-    git = Gync::Git.new(@opts.local)
+  def run(args)
+    @opts = opts_for args.first
+    git = Gync::Git.new(@opts.local, @opts.remote)
     git.pull
-    system command
+    system Shellwords.shelljoin args
     git.push
   rescue Exception => err
     STDERR.puts err
-    raise err
     exit 1
   end
 
@@ -36,8 +41,8 @@ module Gync
     opts = YAML.load_file(config_file)
     # validate
     result = opts[command] || raise("There is no `#{command}` section #{config_file}")
-    result['local'] || raise("There is no `#{command}.local` section #{config_file}")
-    result['remote'] || raise("There is no `#{command}.remote` section #{config_file}")
+    result['local']        || raise("There is no `#{command}.local` section #{config_file}")
+    result['remote']       || raise("There is no `#{command}.remote` section #{config_file}")
     OpenStruct.new(result)
   end
 end

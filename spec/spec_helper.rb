@@ -3,6 +3,7 @@ $LOAD_PATH.unshift(File.dirname(__FILE__))
 
 GYNC_ROOT = File.expand_path File.join(File.dirname(__FILE__), '..')
 ENV['PATH'] = "#{GYNC_ROOT}/bin:" + ENV['PATH']
+ENV['PATH'] = "#{GYNC_ROOT}/spec/bin:" + ENV['PATH']
 
 require 'rspec'
 require 'gync'

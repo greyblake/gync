@@ -7,11 +7,9 @@ require 'ruby-debug'
 require 'gync'
 require 'optparse'
 
-arg = ARGV.first
-
-case arg.to_s
+case ARGV.first.to_s
   when /^(-h|--help|help|\s*)$/
     Gync.print_help
   else
-    Gync.run arg
+    Gync.run ARGV
 end
