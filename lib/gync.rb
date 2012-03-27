@@ -4,6 +4,7 @@ require 'socket'
 require 'shellwords'
 require 'git'
 require 'gync/git'
+require 'logger'
 
 module Gync
   extend self
@@ -25,6 +26,8 @@ For more help please visit https://github.com/greyblake/gync
     system Shellwords.shelljoin args
     git.push
   rescue Exception => err
+    log = Logger.new '/tmp/gync.log'
+    log.error err
     STDERR.puts err
     exit 1
   end

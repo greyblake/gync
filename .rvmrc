@@ -4,12 +4,7 @@
 # development environment upon cd'ing into the directory
 
 # First we specify our desired <ruby>[@<gemset>], the @gemset name is optional.
-environment_id="ruby-1.8.7-p352@gync"
-
-#
-# Uncomment following line if you want options to be set only for given project.
-#
-# PROJECT_JRUBY_OPTS=( --1.9 )
+environment_id="ruby-1.9.2-p290@gync"
 
 #
 # First we attempt to load the desired environment directly from the environment
@@ -22,16 +17,15 @@ if [[ -d "${rvm_path:-$HOME/.rvm}/environments" \
 then
   \. "${rvm_path:-$HOME/.rvm}/environments/$environment_id"
 
-  if [[ -s "${rvm_path:-$HOME/.rvm}/hooks/after_use" ]]
+  if [[ -s ".rvm/hooks/after_use" ]]
   then
-    . "${rvm_path:-$HOME/.rvm}/hooks/after_use"
+    . ".rvm/hooks/after_use"
   fi
 else
   # If the environment file has not yet been created, use the RVM CLI to select.
   if ! rvm --create  "$environment_id"
   then
-    echo "Failed to create RVM environment '${environment_id}'."
-    exit 1
+    echo "Failed to create RVM environment ''."
   fi
 fi
 
@@ -41,15 +35,7 @@ fi
 # necessary.
 #
 # filename=".gems"
-# if [[ -s "$filename" ]]
-# then
+# if [[ -s "$filename" ]] ; then
 #   rvm gemset import "$filename" | grep -v already | grep -v listed | grep -v complete | sed '/^$/d'
 # fi
-
-# If you use bundler, this might be useful to you:
-# if command -v bundle && [[ -s Gemfile ]]
-# then
-#   bundle install
-# fi
-
 
